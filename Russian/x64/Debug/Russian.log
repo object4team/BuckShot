@@ -1,4 +1,10 @@
-﻿  Russian.h
-C:\Users\User\source\repos\Russian\Russian\Russian.h(33,19): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\User\source\repos\Russian\Russian\Russian.h(83,19): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\User\source\repos\Russian\Russian\Russian.h(104,1): error C2059: 구문 오류: '}'
+﻿  Buckshot.cpp
+  Russian.cpp
+C:\GIT\Object\Russian\Russian\UI.cpp(75,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\GIT\Object\Russian\Russian\Russian.cpp(25,19): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Russian.h
+  UI.cpp
+C:\GIT\Object\Russian\Russian\UI.cpp(75,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+x64\Debug\Russian.obj : warning LNK4042: 개체가 두 번 이상 지정되었습니다. 나머지는 무시됩니다.
+  Russian.vcxproj -> C:\GIT\Object\Russian\x64\Debug\Russian.exe

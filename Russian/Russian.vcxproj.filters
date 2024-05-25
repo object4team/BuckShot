@@ -18,7 +18,13 @@
     <ClCompile Include="Russian.h">
       <Filter>헤더 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Buckshot.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="Russian.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
