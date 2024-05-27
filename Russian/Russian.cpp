@@ -85,7 +85,7 @@ public:
             //ui.printAtBottom(20);
 
             realBulletNum--; //실탄 갯수 줄이기
-            player.life--; //라이프 줄어들기
+            target.life--; //라이프 줄어들기
             if (currBullet == total_bullet && player.life != 0) // 총알을 모두 소진하고 맞은 사람이 죽지 않았을 때
             {
                 cout << "모든 총알을 다 소진했습니다. 탄창을 교환합니다." << endl;
@@ -152,7 +152,9 @@ void EnemyTurn(Player& computer, Player& player, Shotgun& shotgun, UI& ui) // 컴
         {
             cout << "자신을 향해 총구를 겨눕니다." << endl;
             Sleep(1000);
-            shotgun.Shoot(computer, player, computer, shotgun);
+            if(shotgun.Shoot(computer, player, computer, shotgun) == true) // 실탄이었을 때
+				shotgun.playerTurn = true; // 플레이어 턴으로 넘어가기
+            
         }
         else // 플레이어 사격
         {
@@ -166,7 +168,8 @@ void EnemyTurn(Player& computer, Player& player, Shotgun& shotgun, UI& ui) // 컴
     {
         cout << "자신을 향해 총구를 겨눕니다." << endl;
         Sleep(1000);
-        shotgun.Shoot(computer, player, computer, shotgun);
+        if (shotgun.Shoot(computer, player, computer, shotgun) == true) // 실탄이었을 때
+            shotgun.playerTurn = true; // 플레이어 턴으로 넘어가기
     }
 }
 
@@ -179,6 +182,8 @@ void RussianGame()
     Shotgun shotgun;
     shotgun.InitiateShotgun();
     UI ui;
+    cout << "\n실탄과 공포탄을 랜덤으로 넣고 있습니다..." << endl;
+    Sleep(3000);
     while (player.life != 0 && computer.life != 0)
     {
         ui.PrintUI(player.life,computer.life,shotgun.total_bullet,shotgun.currBullet,shotgun.fakeBulletNum,shotgun.realBulletNum,shotgun.playerTurn);
@@ -192,4 +197,5 @@ void RussianGame()
         ui.printCentered("플레이어가 패배했습니다.");
 	else
         ui.printCentered("플레이어가 승리했습니다.");
+    system("pause");
 }
