@@ -63,7 +63,7 @@ public:
         if (magazine[currBullet++] == false) //실탄이 아닐때
         {
             Sleep(1000);
-            cout << "공포탄" << endl;
+            cout << "틱, 공포탄이었습니다" << endl;
             //Fake(); 공포탄일때 UI출력
             Sleep(1000);
             fakeBulletNum--; //공포탄 갯수 줄이기
@@ -77,7 +77,9 @@ public:
         else // 실탄일때
         {
             Sleep(1000);
-            cout << "실탄" << endl;
+			system("cls");
+		    ui.ShootEffect();
+            //ui.real();
             //Real(); //실탄일 때 UI출력
             Sleep(1000);
             realBulletNum--; //실탄 갯수 줄이기
@@ -97,8 +99,8 @@ public:
 void PlayerTurn(Player& player, Player& enemy, Shotgun& shotgun, UI& ui) // 플레이어의 행동 선택
 {
 	char key = ' ';
-
     ui.printCentered("상대방에게 쏠지(↑), 자신에게 쏠지 선택하세요(↓)");
+    _getch();
     while ((key != 72 && key != 80)) // 위 방향키(72) 혹은 아래 방향키(80)를 받을때까지
     {
         key = _getch(); //키를 입력받기
@@ -159,6 +161,7 @@ void EnemyTurn(Player& computer, Player& player, Shotgun& Shotgun, UI& ui) // 컴
         Shotgun.Shoot(computer);
     }
 }
+
 
 
 void RussianGame()
