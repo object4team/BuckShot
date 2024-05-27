@@ -58,7 +58,7 @@ public:
         }
     }
     
-    void Shoot(Player& player) //사격
+    bool Shoot(Player& player) //사격
     {
         if (magazine[currBullet++] == false) //실탄이 아닐때
         {
@@ -73,6 +73,7 @@ public:
                 cout << "모든 총알을 다 소진했습니다. 탄창을 교환합니다." << endl;
                 InitiateShotgun(); // 재장전
             }
+            return false;
         }
         else // 실탄일때
         {
@@ -88,6 +89,7 @@ public:
                 cout << "모든 총알을 다 소진했습니다. 탄창을 교환합니다." << endl;
                 InitiateShotgun(); // 재장전
             }
+            return true;
         }
     }
 
@@ -99,6 +101,7 @@ void PlayerTurn(Player& player, Player& enemy, Shotgun& shotgun, UI& ui) // 플레
 	char key = ' ';
 
     ui.printCentered("상대방에게 쏠지(↑), 자신에게 쏠지 선택하세요(↓)");
+    ui.printCentered("자신에게 공포탄을 쏠 경우 차례를 유지할 수 있습니다.");
     while ((key != 72 && key != 80)) // 위 방향키(72) 혹은 아래 방향키(80)를 받을때까지
     {
         key = _getch(); //키를 입력받기
@@ -118,7 +121,9 @@ void PlayerTurn(Player& player, Player& enemy, Shotgun& shotgun, UI& ui) // 플레
     {
         cout << "자신을 쏩니다." << endl;
         Sleep(1000);
-        shotgun.Shoot(player); // 자신 쏘기
+        if (shotgun.Shoot(player) == true) { // 실탄이었을 때
+            shotgun.playerTurn = false; // 상대방 턴으로 넘어가기
+        }
     }
 }
 
