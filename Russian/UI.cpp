@@ -12,11 +12,11 @@ public :
 		printDealerHealth(cLife);
 		bulletBoard(totalBullet, fake, real, currBullet);
 
-		std::cout << "Player Turn: " << playerTurn << "\n";
+		//std::cout << "Player Turn: " << playerTurn << "\n";
 		verticalLine();
 	}
 	void printPlayerHealth(int pLife){
-		std::cout << "내 체력 ";
+		std::cout << "\n내 체력 ";
 		for (int i = 0; i < 5; i++) {
 			if(i < pLife)
 				std::cout << "♥";
@@ -72,14 +72,21 @@ public :
             "| $$__  $$| $$  | $$| $$      | $$$$$$/  \\____  $$| $$  \\ $$| $$  \\ $$  | $$          | $$__  $$| $$  \\ $$| $$  | $$| $$| $$$$$$$$  | $$    | $$    | $$$$$$$$\n"
             "| $$  \\ $$| $$  | $$| $$      | $$_  $$  /$$  \\ $$| $$  | $$| $$  | $$  | $$ /$$      | $$  \\ $$| $$  | $$| $$  | $$| $$| $$_____/  | $$ /$$| $$ /$$| $$_____/\n"
             "| $$$$$$$/|  $$$$$$/|  $$$$$$$| $$ \\  $$|  $$$$$$/| $$  | $$|  $$$$$$/  |  $$$$/      | $$  | $$|  $$$$$$/|  $$$$$$/| $$|  $$$$$$$  |  $$$$/|  $$$$/|  $$$$$$$\n"
-            "|_______/  \\______/  \\_______/|__/  \\__/ \\______/ |__/  |__/ \\______/    \\___/        |__/  |__/ \\______/  \\______/ |__/ \\_______/   \\___/   \\___/   \\_______/\n"
-            "\n";
+            "|_______/  \\______/  \\_______/|__/  \\__/ \\______/ |__/  |__/ \\______/    \\___/        |__/  |__/ \\______/  \\______/ |__/ \\_______/   \\___/   \\___/   \\_______/\n";
 	}
 
 	void verticalLine() {
-		for (int i = 0; i < 80; i++)
-			std::cout << "■";
 		std::cout << "\n";
+		for (int i = 0; i < 160; i++)
+			std::cout << "=";
+		std::cout << "\n";
+	}
+
+	void printAtBottom(int consoleHeight) {
+		for (int i = 0; i < consoleHeight; ++i) {
+			std::cout << "\n";
+		}
+		verticalLine();
 	}
 
 	void printCentered(const std::string& text) {
@@ -149,6 +156,7 @@ public :
 	
 	}
 	void ShootEffect() {
+		system("cls");
 		std::ostringstream oss;
 		for (int i = 0; i < 60; i++) {
 			for (int j = 0; j < 80; j++) {
@@ -157,5 +165,7 @@ public :
 			std::cout << "\n" << std::endl;
 		}
 		std:cout << oss.str();
+		Sleep(500);
+		system("cls");
 	}
 };
